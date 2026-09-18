@@ -1,0 +1,277 @@
+.offers-page {
+  min-height: 100vh;
+  padding: 90px 8% 110px;
+  background: #f8f7f2;
+}
+
+
+/* HEADER */
+
+.offers-header {
+  max-width: 720px;
+  margin: 0 auto 60px;
+  text-align: center;
+}
+
+.offers-header span {
+  color: #527255;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 4px;
+}
+
+.offers-header h1 {
+  margin: 14px 0 16px;
+
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 58px;
+  font-weight: 500;
+
+  color: #213c27;
+}
+
+.offers-header p {
+  margin: auto;
+
+  color: #6d706d;
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+
+/* GRID */
+
+.offers-grid {
+  max-width: 1400px;
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+
+  gap: 26px;
+}
+
+
+/* CARD */
+
+.offer-card {
+  position: relative;
+  overflow: hidden;
+
+  background: white;
+
+  border: 1px solid #e5e3dc;
+  border-radius: 20px;
+
+  transition: 0.3s ease;
+}
+
+.offer-card:hover {
+  transform: translateY(-7px);
+
+  box-shadow: 0 15px 35px rgba(35, 60, 40, 0.12);
+}
+
+
+/* DISCOUNT */
+
+.discount {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+
+  z-index: 2;
+
+  padding: 8px 12px;
+
+  background: #3f6543;
+
+  border-radius: 6px;
+
+  color: white;
+
+  font-size: 13px;
+  font-weight: 700;
+}
+
+
+/* IMAGE */
+
+.offer-image {
+  width: 100%;
+  height: 260px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+}
+
+.offer-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.offer-card:hover .offer-image img {
+  transform: scale(1.04);
+}
+
+
+/* CONTENT */
+
+.offer-content {
+  padding: 24px;
+}
+
+.offer-content > span {
+  display: block;
+
+  margin-bottom: 8px;
+
+  color: #69806b;
+
+  font-size: 12px;
+  font-weight: 700;
+
+  letter-spacing: 1.5px;
+}
+
+.offer-content h2 {
+  margin: 0 0 15px;
+
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 27px;
+  font-weight: 500;
+
+  color: #213c27;
+}
+
+.prices {
+  display: flex;
+  flex-direction: column;
+
+  gap: 4px;
+
+  margin-bottom: 15px;
+}
+
+.prices del {
+  color: #999;
+
+  font-size: 15px;
+}
+
+.prices strong {
+  color: #315b36;
+
+  font-size: 21px;
+}
+
+.offer-content p {
+  margin: 0;
+
+  color: #777;
+
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+
+/* BOTTOM SECTION */
+
+.offer-info {
+  max-width: 900px;
+
+  margin: 100px auto 0;
+
+  padding: 70px;
+
+  text-align: center;
+
+  background: #27462c;
+
+  border-radius: 24px;
+
+  color: white;
+}
+
+.offer-info span {
+  font-size: 12px;
+  font-weight: 700;
+
+  letter-spacing: 4px;
+}
+
+.offer-info h2 {
+  margin: 15px 0;
+
+  font-family: Georgia, 'Times New Roman', serif;
+
+  font-size: 42px;
+  font-weight: 500;
+}
+
+.offer-info p {
+  max-width: 600px;
+
+  margin: 0 auto 30px;
+
+  line-height: 1.7;
+
+  color: #e4e9e2;
+}
+
+.offer-info a {
+  display: inline-block;
+
+  padding: 14px 25px;
+
+  border-radius: 6px;
+
+  background: white;
+
+  color: #294c2e;
+
+  text-decoration: none;
+  font-weight: 600;
+}
+
+
+/* RESPONSIVE */
+
+@media (max-width: 1100px) {
+
+  .offers-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+}
+
+
+@media (max-width: 600px) {
+
+  .offers-page {
+    padding: 60px 20px 80px;
+  }
+
+  .offers-header h1 {
+    font-size: 42px;
+  }
+
+  .offers-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .offer-info {
+    margin-top: 60px;
+
+    padding: 45px 25px;
+  }
+
+  .offer-info h2 {
+    font-size: 34px;
+  }
+
+}

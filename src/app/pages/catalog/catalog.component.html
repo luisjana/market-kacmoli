@@ -1,0 +1,77 @@
+<section class="catalog-page">
+
+  <div class="section-header">
+    <p class="section-label">MARKET KACMOLI</p>
+    <h1>Katalogu i Produkteve</h1>
+    <p>Shikoni katalogët tanë me produkte dhe çmime.</p>
+  </div>
+
+  <div *ngIf="loading" class="state-message">
+    <p>Duke ngarkuar...</p>
+  </div>
+
+  <div *ngIf="!loading && catalogs.length === 0" class="state-message">
+    <p>Nuk ka ende kataloge të publikuara.</p>
+  </div>
+
+  <div class="catalog-grid" *ngIf="!loading && catalogs.length > 0">
+
+    <div
+      class="catalog-card"
+      *ngFor="let catalog of catalogs"
+      (click)="openCatalog(catalog)">
+
+      <div class="catalog-card-image">
+        <img *ngIf="catalog.images.length > 0" [src]="catalog.images[0].imageUrl" [alt]="catalog.title">
+        <span class="view-badge">Shiko →</span>
+        <span class="page-count" *ngIf="catalog.images.length > 1">{{ catalog.images.length }} faqe</span>
+      </div>
+
+      <div class="catalog-card-info">
+        <h3>{{ catalog.title }}</h3>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- MODAL / CAROUSEL -->
+<div class="catalog-modal" *ngIf="selectedCatalog" (click)="closeCatalog()">
+
+  <div class="catalog-modal-content" (click)="$event.stopPropagation()">
+
+    <button class="close-button" (click)="closeCatalog()">✕</button>
+
+    <h2>{{ selectedCatalog.title }}</h2>
+
+    <div class="carousel">
+
+      <button
+        type="button"
+        class="carousel-arrow left"
+        *ngIf="selectedCatalog.images.length > 1"
+        (click)="prevImage()">
+        ‹
+      </button>
+
+      <img [src]="selectedCatalog.images[currentImageIndex].imageUrl" [alt]="selectedCatalog.title">
+
+      <button
+        type="button"
+        class="carousel-arrow right"
+        *ngIf="selectedCatalog.images.length > 1"
+        (click)="nextImage()">
+        ›
+      </button>
+
+    </div>
+
+    <p class="carousel-counter" *ngIf="selectedCatalog.images.length > 1">
+      {{ currentImageIndex + 1 }} / {{ selectedCatalog.images.length }}
+    </p>
+
+  </div>
+
+</div>

@@ -1,0 +1,215 @@
+<div class="admin-layout">
+
+  <!-- SIDEBAR -->
+<app-admin-sidebar></app-admin-sidebar>
+
+
+  <!-- MAIN CONTENT -->
+  <main class="admin-content">
+
+    <header class="admin-header">
+
+      <div>
+        <p class="small-title">DASHBOARD</p>
+
+        <h1>Mire se erdhe 👋</h1>
+
+        <p class="header-description">
+          Menaxho ofertat dhe produktet e Market Kacmoli.
+        </p>
+      </div>
+
+      <a
+        routerLink="/admin/offers"
+        class="add-offer-button">
+        + Shto oferte
+      </a>
+
+    </header>
+
+
+    <!-- STATISTICS -->
+    <section class="stats-grid">
+
+      <!-- OFERTAT -->
+      <div class="stat-card">
+
+        <div class="stat-icon">
+          %
+        </div>
+
+        <div>
+          <span>OFERTA AKTIVE</span>
+
+          <h2>
+            {{ offersCount }}
+          </h2>
+
+          <a routerLink="/admin/offers">
+            Menaxho ofertat →
+          </a>
+        </div>
+
+      </div>
+
+
+      <!-- PRODUKTET -->
+      <div class="stat-card">
+
+        <div class="stat-icon">
+          ▣
+        </div>
+
+        <div>
+          <span>PRODUKTE</span>
+
+          <h2>
+            {{ productsCount }}
+          </h2>
+
+          <a routerLink="/admin/products">
+            Menaxho produktet →
+          </a>
+        </div>
+
+      </div>
+
+
+      <!-- STATUSI -->
+      <div class="stat-card">
+
+        <div class="stat-icon">
+          ✓
+        </div>
+
+        <div>
+          <span>STATUSI</span>
+
+          <h2 class="status-active">
+            Aktiv
+          </h2>
+
+          <p>
+            Faqja eshte online
+          </p>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- QUICK ACTIONS -->
+    <section class="dashboard-section">
+
+      <div class="section-heading">
+
+        <div>
+          <span>MENAXHIM</span>
+          <h2>Veprime te shpejta</h2>
+        </div>
+
+      </div>
+
+
+      <div class="actions-grid">
+
+        <!-- SHTO OFERTE -->
+        <a
+          routerLink="/admin/offers"
+          class="action-card">
+
+          <div class="action-icon">
+            +
+          </div>
+
+          <div>
+            <h3>Shto nje oferte</h3>
+
+            <p>
+              Shto nje produkt ne oferte dhe percakto
+              cmimin e ri.
+            </p>
+          </div>
+
+          <span class="arrow">
+            →
+          </span>
+
+        </a>
+
+
+        <!-- SHTO PRODUKT -->
+        <a
+          routerLink="/admin/products"
+          class="action-card">
+
+          <div class="action-icon">
+            +
+          </div>
+
+          <div>
+            <h3>Shto produkt</h3>
+
+            <p>
+              Shto produkte te reja ne katalogun
+              e Market Kacmoli.
+            </p>
+          </div>
+
+          <span class="arrow">
+            →
+          </span>
+
+        </a>
+
+
+        <!-- SHIKO WEBSITE -->
+        <a
+          routerLink="/"
+          class="action-card">
+
+          <div class="action-icon">
+            ↗
+          </div>
+
+          <div>
+            <h3>Shiko website-in</h3>
+
+            <p>
+              Hap faqen publike dhe kontrollo
+              ndryshimet.
+            </p>
+          </div>
+
+          <span class="arrow">
+            →
+          </span>
+
+        </a>
+
+      </div>
+
+    </section>
+
+
+    <!-- INFO -->
+    <section class="info-box">
+
+      <div>
+        <span>MARKET KACMOLI</span>
+
+        <h2>Paneli i menaxhimit</h2>
+
+        <p>
+          Nga ketu mund te menaxhoni ofertat,
+          produktet dhe permbajtjen qe shfaqet
+          ne faqen e Market Kacmoli.
+        </p>
+      </div>
+
+    </section>
+
+  </main>
+
+</div>

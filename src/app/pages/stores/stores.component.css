@@ -1,0 +1,339 @@
+.stores-page {
+  min-height: 100vh;
+  padding: 90px 8% 110px;
+  background: #faf9f5;
+}
+
+
+/* HEADER */
+
+.stores-header {
+  max-width: 750px;
+  margin: 0 auto 60px;
+  text-align: center;
+}
+
+.section-label {
+  display: block;
+  margin-bottom: 15px;
+
+  color: #527255;
+
+  font-size: 13px;
+  font-weight: 700;
+
+  letter-spacing: 4px;
+}
+
+.stores-header h1 {
+  margin: 0 0 18px;
+
+  font-family: Georgia, 'Times New Roman', serif;
+
+  font-size: 58px;
+  font-weight: 500;
+
+  color: #213c27;
+}
+
+.stores-header p {
+  max-width: 620px;
+  margin: auto;
+
+  color: #6d706d;
+
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+
+/* GRID */
+
+.stores-grid {
+  max-width: 1250px;
+  margin: 0 auto;
+
+  display: grid;
+
+  grid-template-columns: repeat(2, 1fr);
+
+  gap: 35px;
+}
+
+
+/* CARD */
+
+.store-card {
+  overflow: hidden;
+
+  background: #ffffff;
+
+  border: 1px solid #e5e3dc;
+
+  border-radius: 22px;
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.store-card:hover {
+  transform: translateY(-6px);
+
+  box-shadow:
+    0 18px 40px
+    rgba(35, 60, 40, 0.12);
+}
+
+
+/* IMAGE */
+
+.store-image {
+  position: relative;
+
+  height: 330px;
+
+  overflow: hidden;
+}
+
+.store-image img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  display: block;
+
+  transition: transform 0.4s ease;
+}
+
+.store-card:hover .store-image img {
+  transform: scale(1.04);
+}
+
+.store-number {
+  position: absolute;
+
+  top: 20px;
+  left: 20px;
+
+  padding: 9px 14px;
+
+  background: #3f6543;
+
+  border-radius: 6px;
+
+  color: white;
+
+  font-size: 12px;
+  font-weight: 700;
+
+  letter-spacing: 2px;
+}
+
+
+/* CONTENT */
+
+.store-content {
+  padding: 30px;
+}
+
+.store-content h2 {
+  margin: 0 0 28px;
+
+  font-family: Georgia, 'Times New Roman', serif;
+
+  font-size: 31px;
+  font-weight: 500;
+
+  color: #213c27;
+}
+
+
+/* DETAILS */
+
+.store-details {
+  display: flex;
+  flex-direction: column;
+
+  gap: 22px;
+
+  margin-bottom: 30px;
+}
+
+.detail {
+  display: flex;
+
+  gap: 15px;
+
+  align-items: flex-start;
+}
+
+.icon {
+  width: 42px;
+  height: 42px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  background: #edf1e9;
+
+  border-radius: 50%;
+
+  font-size: 18px;
+}
+
+.detail span {
+  display: block;
+
+  margin-bottom: 5px;
+
+  color: #608064;
+
+  font-size: 11px;
+  font-weight: 700;
+
+  letter-spacing: 1.5px;
+}
+
+.detail p {
+  margin: 2px 0;
+
+  color: #676b68;
+
+  font-size: 15px;
+}
+
+
+/* MAP BUTTON */
+
+.map-button {
+  display: inline-block;
+
+  padding: 13px 22px;
+
+  background: #3f6543;
+
+  border-radius: 6px;
+
+  color: white;
+
+  text-decoration: none;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  transition: 0.25s ease;
+}
+
+.map-button:hover {
+  background: #294b2e;
+
+  transform: translateY(-2px);
+}
+
+
+/* BOTTOM SECTION */
+
+.stores-bottom {
+  max-width: 900px;
+
+  margin: 100px auto 0;
+
+  padding: 70px;
+
+  text-align: center;
+
+  background: #27462c;
+
+  border-radius: 24px;
+
+  color: white;
+}
+
+.stores-bottom span {
+  font-size: 12px;
+  font-weight: 700;
+
+  letter-spacing: 4px;
+}
+
+.stores-bottom h2 {
+  margin: 15px 0;
+
+  font-family: Georgia, 'Times New Roman', serif;
+
+  font-size: 44px;
+  font-weight: 500;
+}
+
+.stores-bottom p {
+  max-width: 600px;
+
+  margin: 0 auto 30px;
+
+  color: #e2e8e1;
+
+  line-height: 1.7;
+}
+
+.stores-bottom a {
+  display: inline-block;
+
+  padding: 14px 24px;
+
+  background: white;
+
+  border-radius: 6px;
+
+  color: #294b2e;
+
+  text-decoration: none;
+
+  font-weight: 600;
+}
+
+
+/* RESPONSIVE */
+
+@media (max-width: 900px) {
+
+  .stores-grid {
+    grid-template-columns: 1fr;
+  }
+
+}
+
+
+@media (max-width: 600px) {
+
+  .stores-page {
+    padding: 60px 20px 80px;
+  }
+
+  .stores-header h1 {
+    font-size: 42px;
+  }
+
+  .store-image {
+    height: 260px;
+  }
+
+  .store-content {
+    padding: 24px;
+  }
+
+  .stores-bottom {
+    margin-top: 60px;
+
+    padding: 45px 25px;
+  }
+
+  .stores-bottom h2 {
+    font-size: 34px;
+  }
+
+}

@@ -1,0 +1,103 @@
+<section class="offers-page">
+
+  <div class="offers-header">
+    <span>MOS I HUMBISNI</span>
+
+    <h1>Ofertat tona</h1>
+
+    <p>
+      Përfitoni nga ofertat e zgjedhura të Market Kacmoli.
+      Çmime të mira për produktet që ju duhen çdo ditë.
+    </p>
+  </div>
+
+
+  <!-- OFERTAT NGA BACKEND -->
+  <div class="offers-grid">
+
+    <div
+      class="offer-card"
+      *ngFor="let offer of offers">
+
+      <!-- ULJA -->
+      <div class="discount">
+        -{{ offer.discount }}%
+      </div>
+
+
+      <!-- FOTO -->
+      <div class="offer-image">
+
+        <img
+          [src]="offer.image"
+          [alt]="offer.name">
+
+      </div>
+
+
+      <!-- INFORMACIONI -->
+      <div class="offer-content">
+
+        <span>OFERTË</span>
+
+        <h2>
+          {{ offer.name }}
+        </h2>
+
+
+        <div class="prices">
+
+          <del>
+            {{ offer.oldPrice }} Lekë
+          </del>
+
+          <strong>
+            {{ offer.newPrice }} Lekë
+          </strong>
+
+        </div>
+
+        <p>
+          Përfitoni nga kjo ofertë speciale në Market Kacmoli.
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- NESE NUK KA OFERTA -->
+  <div
+    class="no-offers"
+    *ngIf="offers.length === 0">
+
+    <h2>Nuk ka oferta aktive për momentin.</h2>
+
+    <p>
+      Na vizitoni përsëri për ofertat e reja.
+    </p>
+
+  </div>
+
+
+  <!-- INFO -->
+  <div class="offer-info">
+
+    <span>MARKET KACMOLI</span>
+
+    <h2>Oferta të reja çdo javë</h2>
+
+    <p>
+      Na vizitoni në një nga pikat tona dhe zbuloni ofertat
+      dhe produktet që kemi përgatitur për ju.
+    </p>
+
+    <a routerLink="/stores">
+      Gjeni pikën më të afërt →
+    </a>
+
+  </div>
+
+</section>

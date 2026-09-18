@@ -1,0 +1,43 @@
+<aside class="sidebar">
+
+  <div class="sidebar-brand">
+    <h2>Market Kacmoli</h2>
+    <span>ADMIN PANEL</span>
+  </div>
+
+  <nav class="sidebar-menu">
+
+    <a routerLink="/admin/dashboard" routerLinkActive="active" class="menu-item">
+      <span class="menu-icon">⌂</span>
+      Dashboard
+    </a>
+
+    <a routerLink="/admin/offers" routerLinkActive="active" class="menu-item">
+      <span class="menu-icon">%</span>
+      Ofertat
+    </a>
+
+    <a routerLink="/admin/products" routerLinkActive="active" class="menu-item">
+      <span class="menu-icon">▣</span>
+      Produktet
+    </a>
+
+    <a routerLink="/admin/catalog" routerLinkActive="active" class="menu-item">
+      <span class="menu-icon">🖼</span>
+      Katalogu
+    </a>
+
+    <a routerLink="/" class="menu-item">
+      <span class="menu-icon">↗</span>
+      Shiko faqen
+    </a>
+
+  </nav>
+
+  <div class="sidebar-bottom">
+    <button type="button" class="logout-button" (click)="logout()">
+      Dil nga paneli
+    </button>
+  </div>
+
+</aside>

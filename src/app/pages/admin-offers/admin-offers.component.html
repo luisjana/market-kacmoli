@@ -1,0 +1,252 @@
+<div class="admin-offers-page">
+
+<app-admin-sidebar></app-admin-sidebar>
+
+  <main class="offers-content">
+
+    <header class="page-header">
+
+      <div>
+        <span class="small-title">OFERTAT</span>
+
+        <h1>Menaxho ofertat</h1>
+
+        <p>
+          Shto, ndrysho ose fshi ofertat qe shfaqen ne website.
+        </p>
+      </div>
+
+      <button
+        type="button"
+        class="add-button"
+        (click)="openAddForm()">
+        + Shto oferte
+      </button>
+
+    </header>
+
+
+    <section
+      class="offer-form-box"
+      *ngIf="showForm">
+
+      <div class="form-header">
+
+        <div>
+          <span>OFERTA</span>
+
+          <h2>
+            {{ editingId !== null ? 'Ndrysho oferten' : 'Shto oferte te re' }}
+          </h2>
+        </div>
+
+        <button
+          type="button"
+          class="close-button"
+          (click)="closeForm()">
+          ×
+        </button>
+
+      </div>
+
+
+      <form
+        #offerForm="ngForm"
+        (ngSubmit)="offerForm.valid && saveOffer()">
+
+        <div class="form-grid">
+
+          <div class="form-group">
+
+            <label>Emri i produktit</label>
+
+            <input
+              type="text"
+              name="name"
+              [(ngModel)]="formData.name"
+              placeholder="p.sh. Qumesht"
+              required>
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label>Foto e produktit</label>
+
+            <input
+              type="file"
+              accept="image/png,image/jpeg,image/webp"
+              (change)="onFileSelected($event)">
+
+            <div
+              class="image-preview"
+              *ngIf="formData.image">
+
+              <img
+                [src]="formData.image"
+                alt="Foto e ofertes">
+
+            </div>
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label>Cmimi i vjeter</label>
+
+            <input
+              type="number"
+              name="oldPrice"
+              [(ngModel)]="formData.oldPrice"
+              placeholder="150"
+              min="0"
+              required>
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label>Cmimi i ri</label>
+
+            <input
+              type="number"
+              name="newPrice"
+              [(ngModel)]="formData.newPrice"
+              placeholder="120"
+              min="0"
+              required>
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label>Ulja %</label>
+
+            <input
+              type="number"
+              name="discount"
+              [(ngModel)]="formData.discount"
+              placeholder="20"
+              min="0"
+              max="100"
+              required>
+
+          </div>
+
+        </div>
+
+
+        <div class="form-actions">
+
+          <button
+            type="button"
+            class="cancel-button"
+            (click)="closeForm()">
+
+            Anulo
+
+          </button>
+
+          <button
+            type="submit"
+            class="save-button"
+            [disabled]="
+              offerForm.invalid ||
+              !formData.image
+            ">
+
+            {{ editingId !== null ? 'Ruaj ndryshimet' : 'Shto oferten' }}
+
+          </button>
+
+        </div>
+
+      </form>
+
+    </section>
+
+
+    <section class="offers-section">
+
+      <div class="section-title">
+
+        <h2>Ofertat aktive</h2>
+
+        <span>
+          {{ offers.length }} oferta
+        </span>
+
+      </div>
+
+
+      <div class="offers-grid">
+
+        <div
+          class="offer-card"
+          *ngFor="let offer of offers">
+
+          <div class="offer-image">
+
+            <span class="discount">
+              -{{ offer.discount }}%
+            </span>
+
+            <img
+              [src]="offer.image"
+              [alt]="offer.name">
+
+          </div>
+
+
+          <div class="offer-info">
+
+            <h3>
+              {{ offer.name }}
+            </h3>
+
+            <div class="prices">
+
+              <span class="old-price">
+                {{ offer.oldPrice }} Leke
+              </span>
+
+              <span class="new-price">
+                {{ offer.newPrice }} Leke
+              </span>
+
+            </div>
+
+
+            <div class="offer-actions">
+
+              <button
+                type="button"
+                class="edit-button"
+                (click)="editOffer(offer)">
+                Edit
+              </button>
+
+              <button
+                type="button"
+                class="delete-button"
+                (click)="deleteOffer(offer.id)">
+                Delete
+              </button>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+</div>

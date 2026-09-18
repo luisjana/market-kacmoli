@@ -1,0 +1,115 @@
+<div class="admin-layout">
+
+  <app-admin-sidebar></app-admin-sidebar>
+
+  <main class="admin-content">
+
+    <header class="admin-header">
+      <div>
+        <p class="small-title">KATALOGU</p>
+        <h1>Katalogu i produkteve</h1>
+        <p class="header-description">
+          Menaxho kataloget qe shfaqen ne faqen kryesore dhe faqen publike te katalogut.
+        </p>
+      </div>
+
+      <button type="button" class="add-offer-button" (click)="openAddForm()">
+        + Shto katalog
+      </button>
+    </header>
+
+    <section class="dashboard-section">
+
+      <div *ngIf="loading">
+        <p>Duke ngarkuar...</p>
+      </div>
+
+      <div *ngIf="!loading && catalogs.length === 0">
+        <p>Nuk ka ende kataloge te ngarkuara.</p>
+      </div>
+
+      <div class="catalog-grid" *ngIf="!loading && catalogs.length > 0">
+
+        <div class="catalog-card" *ngFor="let catalog of catalogs">
+
+          <img
+            *ngIf="catalog.images.length > 0"
+            [src]="catalog.images[0].imageUrl"
+            [alt]="catalog.title">
+
+          <div class="catalog-card-info">
+            <h3>{{ catalog.title }}</h3>
+            <span class="image-count">{{ catalog.images.length }} foto</span>
+
+            <div class="catalog-card-actions">
+              <button type="button" class="edit-button" (click)="openEditForm(catalog)">
+                Edito
+              </button>
+
+              <button type="button" class="delete-button" (click)="deleteCatalog(catalog.id)">
+                Fshi
+              </button>
+            </div>
+
+            <!-- Miniaturat e fotove, per fshirje individuale -->
+            <div class="image-thumbs" *ngIf="catalog.images.length > 0">
+              <div class="image-thumb" *ngFor="let img of catalog.images">
+                <img [src]="img.imageUrl">
+                <button type="button" class="thumb-delete" (click)="deleteImage(catalog.id, img.id)">✕</button>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+</div>
+
+<!-- FORM PER SHTIM/EDITIM KATALOGU -->
+<div class="form-overlay" *ngIf="showForm" (click)="closeForm()">
+
+  <div class="form-box" (click)="$event.stopPropagation()">
+
+    <h2>{{ editingId !== null ? 'Edito katalogun' : 'Shto katalog te ri' }}</h2>
+
+    <label>Titulli</label>
+    <input type="text" [(ngModel)]="newTitle" placeholder="p.sh. Katalogu Vere 2026">
+
+<label>
+  {{ editingId !== null ? 'Shto foto te reja (opsionale)' : 'Fotot / faqet e katalogut' }}
+</label>
+
+<div class="photo-picker">
+
+  <div class="photo-preview" *ngFor="let preview of selectedFilePreviews; let i = index">
+    <img [src]="preview">
+    <button type="button" class="photo-remove" (click)="removeSelectedFile(i)">✕</button>
+  </div>
+
+  <label class="photo-add-tile">
+    <span>+</span>
+    <input type="file" accept="image/*" multiple (change)="onFilesSelected($event)" hidden>
+  </label>
+
+</div>
+
+<p class="files-hint" *ngIf="selectedFiles.length > 0">
+  {{ selectedFiles.length }} foto te zgjedhura
+</p>
+
+    <div class="form-actions">
+      <button type="button" class="cancel-button" (click)="closeForm()">Anulo</button>
+      <button type="button" class="save-button" (click)="saveCatalog()" [disabled]="uploading">
+        {{ uploading ? 'Duke ruajtur...' : 'Ruaj' }}
+      </button>
+    </div>
+
+  </div>
+
+</div>

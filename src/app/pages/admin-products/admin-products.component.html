@@ -1,0 +1,239 @@
+<div class="admin-products-page">
+
+<app-admin-sidebar></app-admin-sidebar>
+
+  <main class="products-content">
+
+    <header class="page-header">
+
+      <div>
+        <span class="small-title">PRODUKTET</span>
+
+        <h1>Menaxho produktet</h1>
+
+        <p>
+          Shto, ndrysho ose fshi produktet qe shfaqen ne website.
+        </p>
+      </div>
+
+      <button
+        type="button"
+        class="add-button"
+        (click)="openAddForm()">
+        + Shto produkt
+      </button>
+
+    </header>
+
+
+    <section
+      class="product-form-box"
+      *ngIf="showForm">
+
+      <div class="form-header">
+
+        <div>
+          <span>PRODUKTI</span>
+
+          <h2>
+            {{ editingId !== null ? 'Ndrysho produktin' : 'Shto produkt te ri' }}
+          </h2>
+        </div>
+
+        <button
+          type="button"
+          class="close-button"
+          (click)="closeForm()">
+          ×
+        </button>
+
+      </div>
+
+
+      <form
+        #productForm="ngForm"
+        (ngSubmit)="productForm.valid && saveProduct()">
+
+        <div class="form-grid">
+
+          <div class="form-group">
+
+            <label>Emri i produktit</label>
+
+            <input
+              type="text"
+              name="name"
+              [(ngModel)]="formData.name"
+              placeholder="p.sh. Qumesht"
+              required>
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label>Kategoria</label>
+
+            <select
+              name="category"
+              [(ngModel)]="formData.category"
+              required>
+
+              <option value="" disabled>
+                Zgjidh kategorine
+              </option>
+
+              <option
+                *ngFor="let category of categories"
+                [value]="category">
+
+                {{ category }}
+
+              </option>
+
+            </select>
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label>Cmimi</label>
+
+            <input
+              type="number"
+              name="price"
+              [(ngModel)]="formData.price"
+              placeholder="150"
+              min="0"
+              required>
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label>Foto e produktit</label>
+
+            <input
+              type="file"
+              accept="image/png,image/jpeg,image/webp"
+              (change)="onFileSelected($event)">
+
+            <div
+              class="image-preview"
+              *ngIf="formData.image">
+
+              <img
+                [src]="formData.image"
+                alt="Foto e produktit">
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="form-actions">
+
+          <button
+            type="button"
+            class="cancel-button"
+            (click)="closeForm()">
+
+            Anulo
+
+          </button>
+
+          <button
+            type="submit"
+            class="save-button"
+            [disabled]="
+              productForm.invalid ||
+              !formData.image
+            ">
+
+            {{ editingId !== null ? 'Ruaj ndryshimet' : 'Shto produktin' }}
+
+          </button>
+
+        </div>
+
+      </form>
+
+    </section>
+
+
+    <section class="products-section">
+
+      <div class="section-title">
+
+        <h2>Produktet</h2>
+
+        <span>
+          {{ products.length }} produkte
+        </span>
+
+      </div>
+
+
+      <div class="products-grid">
+
+        <div
+          class="product-card"
+          *ngFor="let product of products">
+
+          <div class="product-image">
+
+            <img
+              [src]="product.image"
+              [alt]="product.name">
+
+          </div>
+
+
+          <div class="product-info">
+
+            <span class="category">
+              {{ product.category }}
+            </span>
+
+            <h3>
+              {{ product.name }}
+            </h3>
+
+            <p class="price">
+              {{ product.price }} Leke
+            </p>
+
+
+            <div class="product-actions">
+
+              <button
+                type="button"
+                class="edit-button"
+                (click)="editProduct(product)">
+                Edit
+              </button>
+
+              <button
+                type="button"
+                class="delete-button"
+                (click)="deleteProduct(product.id)">
+                Delete
+              </button>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+</div>

@@ -1,0 +1,94 @@
+<section class="products-page">
+
+  <!-- HEADER -->
+  <div class="products-header">
+
+    <span class="section-label">
+      ZGJEDHJE PËR ÇDO DITË
+    </span>
+
+    <h1>Produktet tona</h1>
+
+    <p>
+      Zbuloni një përzgjedhje produktesh të freskëta dhe cilësore
+      që gjeni çdo ditë në Market Kacmoli.
+    </p>
+
+  </div>
+
+
+  <!-- FILTERS -->
+  <div class="filters">
+
+    <button
+      *ngFor="let category of categories"
+      [class.active]="selectedCategory === category"
+      (click)="filterProducts(category)">
+
+      {{ category }}
+
+    </button>
+
+  </div>
+
+
+  <!-- PRODUCTS -->
+  <div class="products-grid">
+
+    <div
+      class="product-card"
+      *ngFor="let product of filteredProducts">
+
+      <!-- FOTO -->
+      <div class="product-image">
+
+        <img
+          [src]="product.image"
+          [alt]="product.name">
+
+      </div>
+
+
+      <!-- CONTENT -->
+      <div class="product-content">
+
+        <span class="product-category">
+          {{ product.category }}
+        </span>
+
+        <h2>
+          {{ product.name }}
+        </h2>
+
+        <p class="product-price">
+          {{ product.price }} Lekë
+        </p>
+
+        <div class="availability">
+          <span class="dot"></span>
+          Gjendet në Market Kacmoli
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- EMPTY STATE -->
+  <div
+    class="empty-products"
+    *ngIf="filteredProducts.length === 0">
+
+    <h2>
+      Nuk ka produkte në këtë kategori.
+    </h2>
+
+    <p>
+      Së shpejti do të shtohen produkte të reja.
+    </p>
+
+  </div>
+
+</section>
